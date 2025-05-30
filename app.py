@@ -1,9 +1,14 @@
 import streamlit as st
 import random
 
-# 質問の生成
-a = random.randint(1, 10)
-b = random.randint(1, 10)
+# セッション状態に a, b を保存（初回のみ）
+if "a" not in st.session_state:
+    st.session_state.a = random.randint(1, 10)
+if "b" not in st.session_state:
+    st.session_state.b = random.randint(1, 10)
+
+a = st.session_state.a
+b = st.session_state.b
 answer = a + b
 
 st.write("認証のために、以下の計算をしてください。")
